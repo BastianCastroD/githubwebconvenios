@@ -7,7 +7,6 @@ export const LoginService = async ({ email, password }) => {
 		email,
 		password
 	});
-
 	const config = {
 		method: 'post',
 		url: 'http://150.100.253.61:8181/cxf/usuarios/services/login',
