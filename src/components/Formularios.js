@@ -11,7 +11,7 @@ const colores = {
 const Formulario = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px 70px;
+    gap: 30px 70px;
 
     @media (max-width: 800px){
         grid-template-columns: 1fr;
@@ -77,7 +77,7 @@ const InputH = styled.input`
     width: 100%;
     background: #FFFFFF;
     border-radius: 3px;
-    height: 37px;
+    height: 37  px;
     line-height: 45px;
     padding 0 40px 0 10px;
     border: 0.5px solid rgb(194, 194, 194);

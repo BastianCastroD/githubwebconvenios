@@ -55,12 +55,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#accionLogin {
-    padding: 5px 0px;
-    padding-top: 33px;
+.accionLogin {
+    padding-top: 10px;
+    display:grid;
 }
 
-#botonLogin Button{
+.botonLogin Button{
     background-color: rgb(212, 0, 20);
     color: rgb(255, 255, 255);
     font-size: 14px;
@@ -80,20 +80,19 @@
     list-style-type: none;
 }
 
-#olvidasteContraseña a{
+.olvidasteContraseña a{
     text-decoration: none;
     color: rgb(0, 123, 255);
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     text-align: center;
-    padding: 25px;
     line-height: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#olvidasteContraseña a:hover{
+.olvidasteContraseña a:hover{
     text-decoration:underline;
     cursor: pointer;
 }
@@ -159,9 +158,6 @@
     cursor: pointer;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.navlink {
     list-style-type: none;
     color: rgb(232, 232, 232);
     text-decoration: none;

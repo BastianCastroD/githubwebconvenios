@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/FormClienteEmpresa.css";
 import { Formik } from "formik";
-import { FormPaciente, Inputs, Label, LabelReq } from "./Formularios";
+import { Formulario, Inputs, Label, LabelReq } from "./Formularios";
 
 const FormClienteEmpresa = () => {
     return ( 
@@ -82,7 +82,7 @@ const FormClienteEmpresa = () => {
 
                         {console.log(errors)}
 
-                        <FormPaciente>
+                        <Formulario>
                             <div>
                                 <div className="contenedorTitulo">   
                                     <label className="titulo">Informacion Cliente Empresa</label>
@@ -216,11 +216,9 @@ const FormClienteEmpresa = () => {
                                 />
                                 {touched.empresa && errors.empresa && <div className="error">{errors.empresa}</div>}
                             </div>
-                        </FormPaciente>
-
+                        </Formulario>
                     </form>
                 )}
-
             </Formik>
         </main>
     );

@@ -1,19 +1,19 @@
 const axios = require('axios');
 
-export const LoginService = async ({ email, password }) => {
+export const LoginService = async ({ user, passwd }) => {
 	const data = JSON.stringify({
 		//"user":"user@email.com",
 		//"password":"password"
-		email,
-		password
+		user,
+		passwd
 	});
 	const config = {
 		method: 'post',
 		url: 'http://150.100.253.61:8181/cxf/usuarios/services/login',
 		headers: {
 			'Content-Type': 'application/json',
-			user: email,
-			passwd: password
+			user: user,
+			passwd: passwd
 		},
 	};
 	const response = axios(config)
