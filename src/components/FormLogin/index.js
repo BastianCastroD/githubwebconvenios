@@ -14,7 +14,7 @@ import {
 } from "../Formularios";
 
 const FormLogin = () => {
-	const [btnValid] = useState(false);
+	const [btnValid, setBtnValid] = useState(false);
 	console.log(btnValid);
 
 	const history = useNavigate();
@@ -23,11 +23,14 @@ const FormLogin = () => {
 
 	const validCaptcha = () => {
 		console.log(captcha.current);
-		if(captcha.current.getValue()){
+		if (captcha.current.getValue().length > 0) {
 			console.log('El usuario no es un robot')
+			setBtnValid(true)
 		}
 		else {
 			console.log('Por favor acepta el captcha')
+			setBtnValid(false)
+
 		}
 	}
 
@@ -58,9 +61,9 @@ const FormLogin = () => {
 		history("/Home");
 		//if (email === "prueba2@nuevamasvida.cl" && password === "11111111Aa+") {
 		//	history("/Home");
-        //  } else {
-        //    console.log("Usuario invalido");
-        //  }	
+		//  } else {
+		//    console.log("Usuario invalido");
+		//  }	
 		const resp = await LoginService(registerData);
 		console.log(resp);
 	};
@@ -73,13 +76,13 @@ const FormLogin = () => {
 						<label className="titulo">Usuarios Registrados</label>
 					</div>
 					<div id="notaLogin">
-                 	 	Si tiene una cuenta, inicie sesión con su dirección de correo
-                  		electrónico.
-                	</div>
+						Si tiene una cuenta, inicie sesión con su dirección de correo
+						electrónico.
+					</div>
 					<form className={styles.form} onSubmit={onSubmit}>
 						<Label>
-                  			Correo Electronico<LabelReq> *</LabelReq>
-                		</Label>
+							Correo Electronico<LabelReq> *</LabelReq>
+						</Label>
 						<Inputs
 							type="text"
 							placeholder=""
@@ -88,8 +91,8 @@ const FormLogin = () => {
 							onChange={onchange}
 						/>
 						<Label>
-                  			Contraseña<LabelReq> *</LabelReq>
-                		</Label>
+							Contraseña<LabelReq> *</LabelReq>
+						</Label>
 						<Inputs
 							type="password"
 							name="password"
@@ -98,15 +101,17 @@ const FormLogin = () => {
 							onChange={onchange}
 						/>
 						<div className="recaptcha">
-                  			<ReCAPTCHA 
+							<ReCAPTCHA
 								ref={captcha}
 								sitekey="6Lek9tsiAAAAAOUyn_NBrROccYIf_-w38fsocNlN"
 								onChange={validCaptcha}
 							/>
-                		</div>
+						</div>
 						<div className='accionLogin'>
 							<div className='botonLogin'>
-								<button onClick={onSubmit} active={true}>Inicio Sesion</button>
+								{btnValid == !false && (
+									<button onClick={onSubmit}>Inicio Sesion</button>
+								)}
 							</div>
 							<div className="olvidasteContraseña">
 								<li id="li-contraseña">
