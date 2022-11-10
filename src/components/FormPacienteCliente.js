@@ -1,197 +1,85 @@
-import React from "react";
-import "../styles/FormPacienteCliente.css";
-import { NavLink } from "react-router-dom";
-import { Formik } from "formik";
-
-import { FormPaciente, Inputs, Label, LabelReq } from "./Formularios";
+import React, { useState } from "react";
+import styles from "../styles/FormPacienteCliente.css";
 
 const FormPacienteCliente = () => {
-    return ( 
-        <main>
-            <Formik 
-                action=""
+	const [checkBox, setCheckbox] = useState(false);
+	const [registerData, setRegisterData] = useState({
+		name: '',
+		email: '',
+		password: '',
+		password2: '',
+		termino: 'false',
+	});
 
-                //Valores del formulario//
-                initialValues={{
-                    rut: '',
-                    numeroDocumento: '',
-                    nombre: '',
-                    apellido: '',
-                    celular: '',
-                    correo: '',
-                    password: '',
-                    confirmarPassword: '',
-                    toggle: false, 
-                    checked: []
-                }}
+	const { name, email, password, password2 } = registerData;
 
-                //Validacion de valores
-                validate={(valores) => {
-                    let errores = {};
+	const onchange = (event) => {
+		setRegisterData((prev) => ({
+			...prev,
+			[event.target.name]: event.target.value,
+		}));
+	};
+	const handleClickRemember = (event) => {
+		setCheckbox(!checkBox);
+		setRegisterData((prev) => ({
+			...prev,
+			[event.target.name]: !checkBox,
+		}));
+	};
 
-                    //Validaciones password//
-                    if(!valores.rut){
-                        errores.rut = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.numeroDocumento){
-                        errores.numeroDocumento = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.nombre){
-                        errores.nombre = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.apellido){
-                        errores.apellido = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.celular){
-                        errores.celular = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.correo){
-                        errores.correo = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.password){
-                        errores.password = 'Este campo es obligatorio.'
-                    }
-                    if(!valores.confirmarPassword){
-                        errores.confirmarPassword = 'Este campo es obligatorio.'
-                    }
+	const onSubmit = (e) => {
+		e.preventDefault();
+		console.log(registerData);
+	};
 
-                    return errores;
-                }}
-
-                //Resetear y enviar formulario//
-                onSubmit={(valores, {resetForm}) => {
-                    resetForm();
-                    console.log(valores);
-                    const {rut, numeroDocumento, nombre, apellido, celular, correo, password, confirmarPassword, terminos} = valores;
-                    console.log({rut, numeroDocumento, nombre, apellido, celular, correo, password, confirmarPassword, terminos});
-                    console.log('Formulario Enviado');
-                }}
-            
-            >
-                {( {values, errors, touched, handleSubmit, handleChange, handleBlur} ) => (
-                    <form className="formulario" onSubmit={handleSubmit}>
-                        <FormPaciente>
-                            <div>
-                                <div className="contenedorTitulo">   
-                                    <label className="titulo">Informacion Personal</label>
-                                </div>
-                                <Label>RUT<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="rut"
-                                    name="rut"
-                                    value={values.rut}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.rut && errors.rut && <div className="error">{errors.rut}</div>}
-
-                                <Label>N° Documento <LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="numeroDocumento"
-                                    name="numeroDocumento"
-                                    value={values.numeroDocumento}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.numeroDocumento && errors.numeroDocumento && <div className="error">{errors.numeroDocumento}</div>}
-
-                                <Label>Nombre<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="nombre"
-                                    name="nombre"
-                                    value={values.nombre}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.nombre && errors.nombre && <div className="error">{errors.nombre}</div>}
-
-                                <Label>Apellido<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="apellido"
-                                    name="apellido"
-                                    value={values.apellido}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.apellido && errors.apellido && <div className="error">{errors.apellido}</div>}
-
-                                <Label>Celular<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="celular"
-                                    name="celular"
-                                    value={values.celular}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.celular && errors.celular && <div className="error">{errors.celular}</div>}
-                            </div>
-                            <div>
-                                <div className="contenedorTitulo">   
-                                    <label className="titulo">Informacion de Cuenta</label>
-                                </div>
-                                <Label>Correo Electronico<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="correo"
-                                    name="correo"
-                                    value={values.correo}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.correo && errors.correo && <div className="error">{errors.correo}</div>}
-
-                                <Label>Contraseña<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="password"
-                                    name="password"
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.password && errors.password && <div className="error">{errors.password}</div>}
-
-                                <Label>Confirmar Contraseña<LabelReq> *</LabelReq></Label>
-                                <Inputs 
-                                    type="text"
-                                    className="confirmarPassword"
-                                    name="confirmarPassword"
-                                    value={values.confirmarPassword}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.confirmarPassword && errors.confirmarPassword && <div className="error">{errors.confirmarPassword}</div>}
-
-                                <div className="blockRegistro">
-                                    <div className="blockTerminos">
-                                    <label>
-                                        <input type="checkbox" name="toggle" />
-                                        {`${values.toggle}`}
-                                    </label>
-                                        <span> Acepto los </span>
-                                        <NavLink className="navTerminos">Terminos y Condiciones</NavLink>
-                                    </div>
-                                    <div className="campoRequerido">
-                                        <span className="obligatorio">* Campos requeridos</span>
-                                    </div>
-                                    <div className="blockCrearCuenta">
-                                        <button type="submit">Crea una cuenta</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </FormPaciente>
-
-                    </form>
-                )}
-
-            </Formik>
-        </main>
-    );
+	return (
+		<main>
+			<div className="row align-items-center">
+				<div className="col-md-8">
+					<div>
+						<form className={styles.form} onSubmit={onSubmit}>
+							<input
+								type="text"
+								placeholder="name"
+								name="name"
+								value={name}
+								onChange={onchange}
+							/>
+							<input
+								type="text"
+								placeholder="mail"
+								name="email"
+								value={email}
+								onChange={onchange}
+							/>
+							<input
+								type="password"
+								name="password"
+								placeholder="password"
+								value={password}
+								onChange={onchange}
+							/>
+							<input
+								type="password"
+								name="password2"
+								placeholder="repeat password"
+								value={password2}
+								onChange={onchange}
+							/>
+							<input
+								type="checkbox"
+								name="termino"
+								value={checkBox}
+								checked={checkBox}
+								onChange={handleClickRemember}
+							/>
+							<button type="submit">send</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	);
 }
- 
+
 export default FormPacienteCliente;
