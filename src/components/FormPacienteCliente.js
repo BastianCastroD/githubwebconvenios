@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import styles from "../styles/FormPacienteCliente.css";
+import {
+	Label,
+	LabelReq,
+	Inputs
+} from "../components/Formularios";
+import { NavLink } from "react-router-dom";
 
 const FormPacienteCliente = () => {
 	const [checkBox, setCheckbox] = useState(false);
 	const [registerData, setRegisterData] = useState({
-		name: '',
+		rut: '',
+		nDocumento: '',
+		nombre: '',
+		apellido: '',
+		apellido2: '',
+		celular: '',
 		email: '',
 		password: '',
 		password2: '',
-		termino: 'false',
+		terminos: 'false'
 	});
 
-	const { name, email, password, password2 } = registerData;
+	const { rut, nDocumento, nombre, apellido, apellido2, celular, email, password, password2 } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -27,7 +38,7 @@ const FormPacienteCliente = () => {
 		}));
 	};
 
-	const onSubmit = (e) => {
+	const onSubmit =(e) => {
 		e.preventDefault();
 		console.log(registerData);
 	};
@@ -38,42 +49,97 @@ const FormPacienteCliente = () => {
 				<div className="col-md-8">
 					<div>
 						<form className={styles.form} onSubmit={onSubmit}>
-							<input
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion Personal</label>
+							</div>
+							<Label>RUT <LabelReq> *</LabelReq></Label>
+							<Inputs
 								type="text"
-								placeholder="name"
-								name="name"
-								value={name}
+								placeholder=""
+								name="rut"
+								value={rut}
 								onChange={onchange}
 							/>
-							<input
+							<Label>N° Documento <LabelReq> *</LabelReq></Label>
+							<Inputs
 								type="text"
-								placeholder="mail"
+								placeholder=""
+								name="nDocumento"
+								value={nDocumento}
+								onChange={onchange}
+							/>
+							<Label>Nombre <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="nombre"
+								placeholder=""
+								value={nombre}
+								onChange={onchange}
+							/>
+							<Label>1° Apellido <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="apellido"
+								placeholder=""
+								value={apellido}
+								onChange={onchange}
+							/>
+							<Label>2° Apellido <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
+								name="apellido2"
+								value={apellido2}
+								onChange={onchange}
+							/>
+							<Label>Celular <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
+								name="celular"
+								value={celular}
+								onChange={onchange}
+							/>
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion de la cuenta</label>
+							</div>
+							<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
 								name="email"
 								value={email}
 								onChange={onchange}
 							/>
-							<input
-								type="password"
+							<Label>Contraseña <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
 								name="password"
-								placeholder="password"
 								value={password}
 								onChange={onchange}
 							/>
-							<input
-								type="password"
+							<Label>Repetir contraseña <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
 								name="password2"
-								placeholder="repeat password"
 								value={password2}
 								onChange={onchange}
 							/>
-							<input
-								type="checkbox"
-								name="termino"
-								value={checkBox}
-								checked={checkBox}
-								onChange={handleClickRemember}
-							/>
-							<button type="submit">send</button>
+							<div className="boxTerminos">
+								<input
+									type="checkbox"
+									name="terminos"
+									value={checkBox}
+									checked={checkBox}
+									onChange={handleClickRemember}
+								/>
+								<div className="aceptoTerminos">
+									<p> Acepto los <NavLink className="navTerminos" to="">Terminos y condiciones</NavLink></p>
+								</div>
+							</div>
+							<button className="buttomCrearCuenta" type="submit">Crear Cuenta</button>
 						</form>
 					</div>
 				</div>

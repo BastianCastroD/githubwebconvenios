@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import "../styles/FormClienteEmpresa.css";
 import styles from "../styles/FormPacienteCliente.css";
+import {
+	Label,
+	LabelReq,
+	Inputs
+} from "../components/Formularios";
 
 const FormClienteEmpresa = () => {
 	const [registerData, setRegisterData] = useState({
-		name: '',
-		email: '',
-		password: '',
-		password2: '',
+		rutEmpresa: '',
+		nombreEmpresa: '',
+		apellidoEmpresa: '',
+		emailEmpresa: '',
+		nombreKam: '',
+		emailKam: '',
+		cargo: '',
+		empresa: ''
 	});
 
-	const { name, email, password, password2 } = registerData;
+	const { rutEmpresa, nombreEmpresa, apellidoEmpresa, emailEmpresa, nombreKam, emailKam, cargo, empresa  } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -29,35 +38,83 @@ const FormClienteEmpresa = () => {
 				<div className="col-md-8">
 					<div>
 						<form className={styles.form} onSubmit={onSubmit}>
-							<input
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion Personal</label>
+							</div>
+							<Label>RUT <LabelReq> *</LabelReq></Label>
+							<Inputs
 								type="text"
-								placeholder="name"
-								name="name"
-								value={name}
+								placeholder=""
+								name="rutEmpresa"
+								value={rutEmpresa}
 								onChange={onchange}
 							/>
-							<input
+							<Label>Nombre <LabelReq> *</LabelReq></Label>
+							<Inputs
 								type="text"
-								placeholder="mail"
-								name="email"
-								value={email}
+								name="nombreEmpresa"
+								placeholder=""
+								value={nombreEmpresa}
 								onChange={onchange}
 							/>
-							<input
-								type="password"
-								name="password"
-								placeholder="password"
-								value={password}
+							<Label>Apellido <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="apellidoEmpresa"
+								placeholder=""
+								value={apellidoEmpresa}
 								onChange={onchange}
 							/>
-							<input
-								type="password"
-								name="password2"
-								placeholder="repeat password"
-								value={password2}
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion Cuenta</label>
+							</div>
+							<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
+								name="emailEmpresa"
+								value={emailEmpresa}
 								onChange={onchange}
 							/>
-							<button type="submit">send</button>
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion KAM</label>
+							</div>
+							<Label>Nombre Kam <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="nombreKam"
+								placeholder=""
+								value={nombreKam}
+								onChange={onchange}
+							/>
+							<Label>Correo Electronico Kam <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="emailKam"
+								placeholder=""
+								value={emailKam}
+								onChange={onchange}
+							/>
+							<div className="contenedorTitulo">
+								<label className="titulo">Informacion Empresa</label>
+							</div>
+							<Label>Cargo <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="cargo"
+								placeholder=""
+								value={cargo}
+								onChange={onchange}
+							/>
+							<Label>Empresa (s) <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="empresa"
+								placeholder=""
+								value={empresa}
+								onChange={onchange}
+							/>
+							<button className="buttomCrearCuenta" type="submit">Crear Nuevo Cliente</button>
 						</form>
 					</div>
 				</div>

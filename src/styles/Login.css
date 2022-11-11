@@ -23,23 +23,16 @@
 }
 
 #notaLogin {
+    width: 400px;
     color: rgb(33, 37, 41);
     box-sizing: border-box;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     padding: 10px 0px;
     text-align: left;
     line-height: 21px;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-#blockCorreo {
-    padding: 15px 0px;
-}
-
-#blockContraseña {
-    padding: 6px 0px;
 }
 
 .inputLogin {
@@ -80,6 +73,10 @@
     list-style-type: none;
 }
 
+.olvidasteContraseña {
+    padding-top: 8px;
+}
+
 .olvidasteContraseña a{
     text-decoration: none;
     color: rgb(0, 123, 255);
@@ -99,7 +96,7 @@
 
 #requerido {
     color: rgb(224, 43, 39);
-    padding-top: 23px;
+    padding-top: 15px;
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;

@@ -1,9 +1,14 @@
 import React from "react";
-import { Formulario, Label, GrupoInput, InputH } from "./Formularios";
+import { Label, GrupoInput, InputH } from "./Formularios";
+import { useLocation } from "react-router-dom";
 
 const FormHome = () => {
 	const ar = [{ rut: "273737373" }];
 	console.log(ar[0].rut);
+	const location = useLocation();
+	console.log(location.pathname)
+	const emailparam = location.pathname.split("/")
+	console.log(emailparam[2])
 	return (
 		<main>
 			<div className="container">

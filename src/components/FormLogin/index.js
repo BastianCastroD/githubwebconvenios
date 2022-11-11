@@ -17,7 +17,7 @@ const FormLogin = () => {
 	const [btnValid, setBtnValid] = useState(false);
 	console.log(btnValid);
 
-	const history = useNavigate();
+	const navigate = useNavigate();
 
 	const captcha = useRef(null);
 
@@ -53,18 +53,29 @@ const FormLogin = () => {
 	// 	console.log(resp);
 	// }
 
-
 	// Validaciones del Login
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		console.log(registerData);
-		history("/Home");
-		//if (email === "prueba2@nuevamasvida.cl" && password === "11111111Aa+") {
-		//	history("/Home");
-		//  } else {
-		//    console.log("Usuario invalido");
-		//  }	
+		
 		const resp = await LoginService(registerData);
+		const r = JSON.parse(resp);
+		console.log(r);
+
+		// const {outLoginModel[0]}=resp
+		// console.log(codigoresultado);
+
+		// Condicional segun el codigo de respuesta (0=ok - 1=No Existe - 2=Usuario Invalido - 3=Pass Expirada)
+		if (r.outLoginModel[0].codigoresultado === 0){
+			console.log('Usuario Correcto');
+			navigate(`/Home/${registerData.email}`)
+		} else if(r.outLoginModel[0].codigoresultado === 1){
+			console.log('El usuario no existe')
+		} else if(r.outLoginModel[0].codigoresultado === 2){
+			console.log('Usuario Invalido')
+		}else if(r.outLoginModel[0].codigoresultado === 3){
+			console.log('Clave Expirada')
+		}
 		console.log(resp);
 	};
 
@@ -81,7 +92,7 @@ const FormLogin = () => {
 					</div>
 					<form className={styles.form} onSubmit={onSubmit}>
 						<Label>
-							Correo Electronico<LabelReq> *</LabelReq>
+							Correo Electronico <LabelReq> *</LabelReq>
 						</Label>
 						<Inputs
 							type="text"
@@ -91,7 +102,7 @@ const FormLogin = () => {
 							onChange={onchange}
 						/>
 						<Label>
-							Contraseña<LabelReq> *</LabelReq>
+							Contraseña <LabelReq> *</LabelReq>
 						</Label>
 						<Inputs
 							type="password"
@@ -109,7 +120,7 @@ const FormLogin = () => {
 						</div>
 						<div className='accionLogin'>
 							<div className='botonLogin'>
-								{btnValid == !false && (
+								{btnValid === !false && (
 									<button onClick={onSubmit}>Inicio Sesion</button>
 								)}
 							</div>

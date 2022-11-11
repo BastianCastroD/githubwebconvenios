@@ -57,7 +57,7 @@ const Inputs = styled.input`
     width: 100%;
     background: #FFFFFF;
     border-radius: 3px;
-    height: 37px;
+    height: 40px;
     line-height: 45px;
     padding 0 40px 0 10px;
     border: 0.5px solid rgb(194, 194, 194);
