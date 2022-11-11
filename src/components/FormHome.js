@@ -1,6 +1,8 @@
 import React from "react";
 import { Label, GrupoInput, InputH } from "./Formularios";
 import { useLocation } from "react-router-dom";
+import { HomeService } from "../api/HomeService";
+import { useEffect } from "react";
 
 const FormHome = () => {
 	const ar = [{ rut: "273737373" }];
@@ -9,6 +11,14 @@ const FormHome = () => {
 	console.log(location.pathname)
 	const emailparam = location.pathname.split("/")
 	console.log(emailparam[2])
+	const home= async(email) =>{
+		const response=await HomeService(email)
+		console.log(response)
+	}
+	useEffect(() => {
+		home(emailparam[2])
+	})
+	
 	return (
 		<main>
 			<div className="container">
