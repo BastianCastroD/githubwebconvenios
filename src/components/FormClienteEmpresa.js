@@ -19,7 +19,7 @@ const FormClienteEmpresa = () => {
 		empresa: ''
 	});
 
-	const { rutEmpresa, nombreEmpresa, apellidoEmpresa, emailEmpresa, nombreKam, emailKam, cargo, empresa  } = registerData;
+	const { rutEmpresa, nombreEmpresa, apellidoEmpresa, emailEmpresa, nombreKam, emailKam, cargo, empresa } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
