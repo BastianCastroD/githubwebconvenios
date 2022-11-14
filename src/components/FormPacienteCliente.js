@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/FormPacienteCliente.css";
+//import { PacienteService } from "../api/PacienteService";
 import {
 	Label,
 	LabelReq,

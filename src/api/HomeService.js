@@ -10,7 +10,7 @@ export const HomeService = async (data) => {
 	// });
 	const config = {
 		method: 'get',
-		url: 'http://localhost:8181/cxf/usuarios/services/leer',
+		url: 'http://localhost:8181/cxf/usuario/services/leer',
 		headers: {
 			'Content-Type': 'application/json',
 			user: data,

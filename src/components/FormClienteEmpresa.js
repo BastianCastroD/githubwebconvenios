@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/FormClienteEmpresa.css";
+//import { EmpresaService } from "../api/EmpresaService";
 import styles from "../styles/FormPacienteCliente.css";
 import {
 	Label,
@@ -9,17 +10,18 @@ import {
 
 const FormClienteEmpresa = () => {
 	const [registerData, setRegisterData] = useState({
-		rutEmpresa: '',
-		nombreEmpresa: '',
-		apellidoEmpresa: '',
-		emailEmpresa: '',
+		rut: '',
+		nombre: '',
+		apellido: '',
+		apellido2: '',
+		email: '',
 		nombreKam: '',
 		emailKam: '',
 		cargo: '',
 		empresa: ''
 	});
 
-	const { rutEmpresa, nombreEmpresa, apellidoEmpresa, emailEmpresa, nombreKam, emailKam, cargo, empresa } = registerData;
+	const { rut, nombre, apellido, apellido2, email, nombreKam, emailKam, cargo, empresa } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -46,7 +48,7 @@ const FormClienteEmpresa = () => {
 								type="text"
 								placeholder=""
 								name="rutEmpresa"
-								value={rutEmpresa}
+								value={rut}
 								onChange={onchange}
 							/>
 							<Label>Nombre <LabelReq> *</LabelReq></Label>
@@ -54,15 +56,23 @@ const FormClienteEmpresa = () => {
 								type="text"
 								name="nombreEmpresa"
 								placeholder=""
-								value={nombreEmpresa}
+								value={nombre}
 								onChange={onchange}
 							/>
-							<Label>Apellido <LabelReq> *</LabelReq></Label>
+							<Label>1° Apellido <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
 								name="apellidoEmpresa"
 								placeholder=""
-								value={apellidoEmpresa}
+								value={apellido}
+								onChange={onchange}
+							/>
+							<Label>2° Apellido <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="apellidoEmpresa"
+								placeholder=""
+								value={apellido2}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -73,7 +83,7 @@ const FormClienteEmpresa = () => {
 								type="text"
 								placeholder=""
 								name="emailEmpresa"
-								value={emailEmpresa}
+								value={email}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">

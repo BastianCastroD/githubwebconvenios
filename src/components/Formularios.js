@@ -20,9 +20,10 @@ const Formulario = styled.form`
 
 //Estructura de formulario Paciente Cliente
 const FormPaciente = styled.div`
+    padding-top: 35px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px 75px;
+    gap: 40px 10px;
 
     @media (max-width: 800px){
         grid-template-columns: 1fr;
@@ -38,15 +39,14 @@ const Label = styled.label`
     font-weight: 600;
     min-height: 25px;
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 20px;
-    padding-bottom: 5px;
+    padding-top: 15px;
 `;
 
 //Grupos de input de los formularios
 const GrupoInput = styled.div`
     position: relative;
     z.index: 90;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 `;
 
 //Input de los formularios
@@ -59,7 +59,7 @@ const Inputs = styled.input`
     border-radius: 3px;
     height: 40px;
     line-height: 45px;
-    padding 0 40px 0 10px;
+    padding 0 10px 0 10px;
     border: 0.5px solid rgb(194, 194, 194);
 
     &:focus {
