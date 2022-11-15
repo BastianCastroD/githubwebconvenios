@@ -8,6 +8,7 @@ import {
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import ModalAlert from "./ModalAlert";
+import { ValidatePass } from "../api/ValidatePass";
 // import { Validate } from "../api/Validate";
 // import { Validate } from "../api/Validate";
 
@@ -58,24 +59,29 @@ const FormPacienteCliente = () => {
 		}));
 	};
 
-	const clientePaciente = async (data) => {
-		const resp = await PacienteService()
-		return resp
-	}
-
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(registerData);
-		clientePaciente(registerData)
-		const resp = await PacienteService(registerData)
-		console.log(JSON.parse(resp.length))
-		if (JSON.parse(resp.length) === 20) {
-
+		console.log(registerData.passwd);
+		const validatePassword = await ValidatePass(registerData.passwd)
+		console.log(validatePassword.response);
+		const a = [];
+		a.push(validatePassword.response)
+		console.log(a[0].data.msg)
+		if (a[0].data.code === 500) {
 			setShowModal(true)
-			setMsj("El Paciente/Cliente ya existe")
+			setMsj(a[0].data.msg)
+			return
 		} else {
-			setShowModal(true)
-			setMsj("Paciente Cliente Creado")
+			const resp = await PacienteService(registerData)
+			console.log(JSON.parse(resp.length))
+			if (JSON.parse(resp.length) === 20) {
+
+				setShowModal(true)
+				setMsj("El Paciente/Cliente ya existe")
+			} else {
+				setShowModal(true)
+				setMsj("Paciente Cliente Creado")
+			}
 		}
 	};
 
