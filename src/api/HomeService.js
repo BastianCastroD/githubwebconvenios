@@ -22,7 +22,7 @@ export const HomeService = async (data) => {
 			return JSON.stringify(outLoginModel);
 		})
 		.catch((error) => {
-			return error;
+			throw new error(error);
 		});
 
 	return response;

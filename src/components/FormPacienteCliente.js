@@ -12,6 +12,7 @@ import ModalAlert from "./ModalAlert";
 // import { Validate } from "../api/Validate";
 
 const FormPacienteCliente = () => {
+	const [msj, setMsj] = useState();
 	const [checkBox, setCheckbox] = useState(false);
 	const [registerData, setRegisterData] = useState({
 		rut: '',
@@ -57,7 +58,6 @@ const FormPacienteCliente = () => {
 		}));
 	};
 
-
 	const clientePaciente = async (data) => {
 		const resp = await PacienteService()
 		return resp
@@ -68,9 +68,15 @@ const FormPacienteCliente = () => {
 		console.log(registerData);
 		clientePaciente(registerData)
 		const resp = await PacienteService(registerData)
-		console.log([JSON.parse(resp)])
-		console.log(resp.map(x => x.outActualizar?.outSeq))
-		setShowModal(true)
+		console.log(JSON.parse(resp.length))
+		if (JSON.parse(resp.length) === 20) {
+
+			setShowModal(true)
+			setMsj("El Paciente/Cliente ya existe")
+		} else {
+			setShowModal(true)
+			setMsj("Paciente Cliente Creado")
+		}
 	};
 
 	return (
@@ -186,7 +192,7 @@ const FormPacienteCliente = () => {
 			<Modal showModal={showModal} onClick={handleClose} >
 
 				<ModalAlert
-					msj="Datos Actualizados"
+					msj={msj}
 					onClick={handleClose}
 					onClickSecondary={() => setShowModal(false)}
 					textBtn={"cancel"}

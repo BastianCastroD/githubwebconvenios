@@ -38,21 +38,11 @@ const Login = () => {
             <div id="accionRegistro">
               <div id="botonRegistro">
                 <button onClick={onSubmit}>Crear Cuenta</button>
-                <button onClick={()=>setShowModal(true)} >kihi Cuentaaa</button>
               </div>
             </div>
           </div>
         </FormPaciente>
 			</Formik>
-			<Modal showModal={showModal} onClick={handleClose} >
-
-				<ModalAlert
-          msj="Incompleto"
-          onClick={handleClose}
-          onClickSecondary={()=>setShowModal(false)}
-          textBtn={"cancel"}
-        />
-			</Modal>
 
     </main>
   );

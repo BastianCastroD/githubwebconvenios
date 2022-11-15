@@ -140,13 +140,9 @@ const FormClienteEmpresa = () => {
 									onChange={onchange}
 								/>
 								<Label>Empresa (s) <LabelReq> *</LabelReq></Label>
-								<Inputs
-									type="text"
-									name="cargo"
-									placeholder=""
-									value={cargo}
-									onChange={onchange}
-								/>
+								{/* <select name="cars" id="cars">
+									<option value="volvo">Volvo</option>
+								</select> */}
 								<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Nuevo Cliente</button>							</div>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label, GrupoInput, InputH } from "./Formularios";
 import { useLocation } from "react-router-dom";
 import { HomeService } from "../api/HomeService";
@@ -14,7 +14,6 @@ const FormHome = () => {
 		celular: '',
 	})
 	const location = useLocation();
-	console.log(location.pathname)
 
 	const emailparam = location.pathname.split("/")
 	console.log(emailparam[2])
@@ -33,7 +32,11 @@ const FormHome = () => {
 			celular
 		})
 	}
-	home(emailparam[2])
+	useEffect(() => {
+		home(emailparam[2])
+
+	}, [])
+
 	return (
 		<main>
 			<div className="container">
@@ -49,6 +52,7 @@ const FormHome = () => {
 								</Label>
 								<InputH
 									className="inputForm"
+
 									value={initialState.rut}
 									type="text"
 									readOnly
