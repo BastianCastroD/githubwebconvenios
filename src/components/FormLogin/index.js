@@ -10,8 +10,15 @@ import {
 	LabelReq,
 	Inputs,
 } from "../Formularios";
+import Modal from '../Modal';
+import ModalAlert from '../ModalAlert';
 
 const FormLogin = () => {
+	const [msj, setMsj] = useState();
+	const [showModal, setShowModal] = useState(false);
+	const handleClose = () => {
+		setShowModal(false);
+	}
 	const [btnValid, setBtnValid] = useState(false);
 	console.log(btnValid);
 
@@ -55,7 +62,7 @@ const FormLogin = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		console.log(registerData);
-		
+
 		const resp = await LoginService(registerData);
 		const r = JSON.parse(resp);
 		console.log(r);
@@ -64,14 +71,18 @@ const FormLogin = () => {
 		// console.log(codigoresultado);
 
 		// Condicional segun el codigo de respuesta (0=ok - 1=No Existe - 2=Usuario Invalido - 3=Pass Expirada)
-		if (r.login[0].codigoResultadoLogin === 0){
+		if (r.login[0].codigoResultadoLogin === 0) {
 			console.log('Usuario Correcto');
 			navigate(`/Home/${registerData.email}`)
-		} else if(r.login[0].codigoResultadoLogin === 1){
+		} else if (r.login[0].codigoResultadoLogin === 1) {
+			setShowModal(true)
+			setMsj("El usuario no existe")
 			console.log('El usuario no existe')
-		} else if(r.login[0].codigoResultadoLogin === 2){
+		} else if (r.login[0].codigoResultadoLogin === 2) {
 			console.log('Usuario Invalido')
-		}else if(r.login[0].codigoResultadoLogin === 3){
+			setShowModal(true)
+			setMsj("Usuario Invalido")
+		} else if (r.login[0].codigoResultadoLogin === 3) {
 			console.log('Clave Expirada')
 			navigate("/CambiarPass")
 		}
@@ -135,6 +146,16 @@ const FormLogin = () => {
 							</div>
 						</div>
 					</form>
+
+					<Modal showModal={showModal} onClick={handleClose} >
+
+						<ModalAlert
+							msj={msj}
+							onClick={handleClose}
+							onClickSecondary={() => setShowModal(false)}
+							textBtn={"cancel"}
+						/>
+					</Modal>
 				</div>
 			</div>
 		</div>

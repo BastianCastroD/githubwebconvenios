@@ -34,7 +34,6 @@ const FormHome = () => {
 	}
 	useEffect(() => {
 		home(emailparam[2])
-
 	}, [])
 
 	return (
