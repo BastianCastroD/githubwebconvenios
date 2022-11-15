@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Label, GrupoInput, InputH } from "./Formularios";
 import { useLocation } from "react-router-dom";
 import { HomeService } from "../api/HomeService";
 //import { LoginService } from "../api/LoginService";
-import { useEffect } from "react";
 
 const FormHome = () => {
-
+	const [initialState, setInitialState] = useState({
+		nombre: '',
+		rut: '',
+		apellido: '',
+		apellido2: '',
+		email: '',
+		celular: '',
+	})
 	const location = useLocation();
 	console.log(location.pathname)
 
 	const emailparam = location.pathname.split("/")
 	console.log(emailparam[2])
 
-	const home= async(email) =>{
-		const response=await HomeService(email)
+	const home = async (email) => {
+		const response = await HomeService(email)
 		const datosUsuarios = JSON.parse(response)
-		console.log({datosUsuarios})
+		console.log(datosUsuarios.usuario[0].apellido)
+		const { rut, nombre, apellido, apellido2, correo, celular } = datosUsuarios.usuario[0];
+		setInitialState({
+			rut: rut,
+			nombre: nombre,
+			apellido: apellido,
+			apellido2: apellido2,
+			email: correo,
+			celular
+		})
 	}
-
-	useEffect(() => {
-		home(emailparam[2])
-	})
-
+	home(emailparam[2])
 	return (
 		<main>
 			<div className="container">
@@ -38,7 +49,7 @@ const FormHome = () => {
 								</Label>
 								<InputH
 									className="inputForm"
-									value={""}
+									value={initialState.rut}
 									type="text"
 									readOnly
 								/>
@@ -50,7 +61,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value={""}
+									value={initialState.nombre}
 									readOnly
 								/>
 							</GrupoInput>
@@ -61,7 +72,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value={""}
+									value={initialState.apellido}
 									readOnly
 								/>
 							</GrupoInput>
@@ -72,7 +83,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value={""}
+									value={initialState.apellido2}
 									readOnly
 								/>
 							</GrupoInput>
@@ -83,7 +94,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value={""}
+									value={initialState.celular}
 									readOnly
 								/>
 							</GrupoInput>
@@ -101,7 +112,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value={""}
+									value={initialState.email}
 									readOnly
 								/>
 							</GrupoInput>

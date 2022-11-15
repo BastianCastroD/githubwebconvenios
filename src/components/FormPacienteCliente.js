@@ -6,6 +6,10 @@ import {
 	Inputs
 } from "../components/Formularios";
 import { NavLink } from "react-router-dom";
+import Modal from "./Modal";
+import ModalAlert from "./ModalAlert";
+// import { Validate } from "../api/Validate";
+// import { Validate } from "../api/Validate";
 
 const FormPacienteCliente = () => {
 	const [checkBox, setCheckbox] = useState(false);
@@ -20,6 +24,10 @@ const FormPacienteCliente = () => {
 		passwd: '',
 		terminos: 'false'
 	});
+	const [showModal, setShowModal] = useState(false);
+	const handleClose = () => {
+		setShowModal(false);
+	}
 
 	const { rut, ndocumento, nombre, apellido, apellido2, celular, user, passwd } = registerData;
 
@@ -28,7 +36,19 @@ const FormPacienteCliente = () => {
 			...prev,
 			[event.target.name]: event.target.value,
 		}));
+
 	};
+
+	// const validateData = async () => {
+	// 	const { rut, ndocumento } = registerData;
+	// 	console.log({ rut, ndocumento })
+	// 	if (rut.length > 9 && ndocumento > 5) {
+
+	// 		const resp = await Validate({ rut, serie: ndocumento });
+	// 		return resp;
+	// 	}
+	// }
+	// console.log(validateData())
 	const handleClickRemember = (event) => {
 		setCheckbox(!checkBox);
 		setRegisterData((prev) => ({
@@ -37,17 +57,20 @@ const FormPacienteCliente = () => {
 		}));
 	};
 
-	const clientePaciente = async(data) => {
+
+	const clientePaciente = async (data) => {
 		const resp = await PacienteService()
 		return resp
 	}
 
-	const onSubmit = async(e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
 		console.log(registerData);
 		clientePaciente(registerData)
 		const resp = await PacienteService(registerData)
-		console.log(resp)
+		console.log([JSON.parse(resp)])
+		console.log(resp.map(x => x.outActualizar?.outSeq))
+		setShowModal(true)
 	};
 
 	return (
@@ -160,7 +183,15 @@ const FormPacienteCliente = () => {
 				</div>
 			</div>
 
+			<Modal showModal={showModal} onClick={handleClose} >
 
+				<ModalAlert
+					msj="Datos Actualizados"
+					onClick={handleClose}
+					onClickSecondary={() => setShowModal(false)}
+					textBtn={"cancel"}
+				/>
+			</Modal>
 		</main >
 	);
 }
