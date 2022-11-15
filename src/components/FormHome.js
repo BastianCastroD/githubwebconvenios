@@ -2,23 +2,27 @@ import React from "react";
 import { Label, GrupoInput, InputH } from "./Formularios";
 import { useLocation } from "react-router-dom";
 import { HomeService } from "../api/HomeService";
+//import { LoginService } from "../api/LoginService";
 import { useEffect } from "react";
 
 const FormHome = () => {
-	const ar = [{ rut: "273737373" }];
-	console.log(ar[0].rut);
+
 	const location = useLocation();
 	console.log(location.pathname)
+
 	const emailparam = location.pathname.split("/")
 	console.log(emailparam[2])
+
 	const home= async(email) =>{
 		const response=await HomeService(email)
-		console.log(response)
+		const datosUsuarios = JSON.parse(response)
+		console.log({datosUsuarios})
 	}
+
 	useEffect(() => {
 		home(emailparam[2])
 	})
-	
+
 	return (
 		<main>
 			<div className="container">
@@ -34,7 +38,7 @@ const FormHome = () => {
 								</Label>
 								<InputH
 									className="inputForm"
-									value={ar[0].rut}
+									value={""}
 									type="text"
 									readOnly
 								/>
@@ -46,18 +50,29 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value="Bastian"
+									value={""}
 									readOnly
 								/>
 							</GrupoInput>
 							<GrupoInput>
 								<Label className="labelForm" htmlFor="">
-									Apellido
+									1° Apellido
 								</Label>
 								<InputH
 									className="inputForm"
 									type="text"
-									value="Castro"
+									value={""}
+									readOnly
+								/>
+							</GrupoInput>
+							<GrupoInput>
+								<Label className="labelForm" htmlFor="">
+									2° Apellido
+								</Label>
+								<InputH
+									className="inputForm"
+									type="text"
+									value={""}
 									readOnly
 								/>
 							</GrupoInput>
@@ -68,7 +83,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value="948833456"
+									value={""}
 									readOnly
 								/>
 							</GrupoInput>
@@ -86,7 +101,7 @@ const FormHome = () => {
 								<InputH
 									className="inputForm"
 									type="text"
-									value="Bastian@gmail.com"
+									value={""}
 									readOnly
 								/>
 							</GrupoInput>

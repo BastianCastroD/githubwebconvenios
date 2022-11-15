@@ -10,8 +10,6 @@ export const LoginService = async (data) => {
 	// });
 	const config = {
 		method: 'post',
-		//url: 'http://150.100.253.61:8181/cxf/usuarios/services/login',
-		//url: 'https://3e6b8b97-c71c-463a-ae48-8b6df172a3d4.mock.pstmn.io/login',
 		url: 'http://localhost:8181/cxf/usuarios/services/login',
 		headers: {
 			'Content-Type': 'application/json',
@@ -20,9 +18,9 @@ export const LoginService = async (data) => {
 		},
 	};
 	const response = axios(config)
-		.then(({ data: outLoginModel }) => {
-			console.log(outLoginModel);
-			return JSON.stringify(outLoginModel);
+		.then(({ data: outLogin }) => {
+			console.log(outLogin);
+			return JSON.stringify(outLogin);
 		})
 		.catch((error) => {
 			return error;

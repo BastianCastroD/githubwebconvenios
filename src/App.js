@@ -11,6 +11,7 @@ import NuevoPacienteCliente from "./screens/NuevoPacienteCliente";
 import AdministrarUsuarios from "./screens/AdministrarUsuarios";
 import AdministrarRoles from "./screens/AdministrarRoles";
 import NuevoClienteEmpresa from "./screens/NuevoClienteEmpresa";
+import CambiarPass from "./screens/CambiarPass";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route exact path="/AdministrarUsuarios" element={<AdministrarUsuarios />} />
         <Route exact path="/AdministrarRoles" element={<AdministrarRoles />} />
         <Route exact path="/NuevoClienteEmpresa" element={<NuevoClienteEmpresa />} />
+        <Route exact path="/CambiarPass" element={<CambiarPass />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/FormClienteEmpresa.css";
 import styles from "../styles/FormPacienteCliente.css";
+import {EmpresaService} from "../api/EmpresaService";
 import {
 	Label,
 	LabelReq,
@@ -9,17 +10,18 @@ import {
 
 const FormClienteEmpresa = () => {
 	const [registerData, setRegisterData] = useState({
-		rutEmpresa: '',
-		nombreEmpresa: '',
-		apellidoEmpresa: '',
-		emailEmpresa: '',
-		nombreKam: '',
-		emailKam: '',
+		rut: '',
+		nombre: '',
+		apellido: '',
+		apellido2: '',
+		user: '',
+		passwd: '',
+		kamConvenios: '',
+		kamCorreo: '',
 		cargo: '',
-		empresa: ''
 	});
 
-	const { rutEmpresa, nombreEmpresa, apellidoEmpresa, emailEmpresa, nombreKam, emailKam, cargo, empresa } = registerData;
+	const { rut, nombre, apellido, apellido2, user, passwd,  kamConvenios, kamCorreo, cargo } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -28,16 +30,25 @@ const FormClienteEmpresa = () => {
 		}));
 	};
 
-	const onSubmit = (e) => {
+	const clienteEmpresa = async(data) => {
+		const resp = await EmpresaService()
+		return resp
+	}
+
+	const onSubmit = async(e) => {
 		e.preventDefault();
 		console.log(registerData);
+		clienteEmpresa(registerData)
+		const resp = await EmpresaService(registerData)
+		console.log(resp)
 	};
+
 	return (
 		<main>
 			<div className="row align-items-center">
 				<div className="col-md-8">
 					<div>
-						<form className={styles.form} onSubmit={onSubmit}>
+						<form className={styles.form}>
 							<div className="contenedorTitulo">
 								<label className="titulo">Informacion Personal</label>
 							</div>
@@ -45,24 +56,32 @@ const FormClienteEmpresa = () => {
 							<Inputs
 								type="text"
 								placeholder=""
-								name="rutEmpresa"
-								value={rutEmpresa}
+								name="rut"
+								value={rut}
 								onChange={onchange}
 							/>
 							<Label>Nombre <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="nombreEmpresa"
+								name="nombre"
 								placeholder=""
-								value={nombreEmpresa}
+								value={nombre}
 								onChange={onchange}
 							/>
-							<Label>Apellido <LabelReq> *</LabelReq></Label>
+							<Label>1° Apellido <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="apellidoEmpresa"
+								name="apellido"
 								placeholder=""
-								value={apellidoEmpresa}
+								value={apellido}
+								onChange={onchange}
+							/>
+							<Label>2° Apellido <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="apellido2"
+								placeholder=""
+								value={apellido2}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -72,8 +91,16 @@ const FormClienteEmpresa = () => {
 							<Inputs
 								type="text"
 								placeholder=""
-								name="emailEmpresa"
-								value={emailEmpresa}
+								name="user"
+								value={user}
+								onChange={onchange}
+							/>
+							<Label>Contraseña <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="passwd"
+								placeholder=""
+								value={passwd}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -82,17 +109,17 @@ const FormClienteEmpresa = () => {
 							<Label>Nombre Kam <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="nombreKam"
+								name="kamConvenios"
 								placeholder=""
-								value={nombreKam}
+								value={kamConvenios}
 								onChange={onchange}
 							/>
 							<Label>Correo Electronico Kam <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="emailKam"
+								name="kamCorreo"
 								placeholder=""
-								value={emailKam}
+								value={kamCorreo}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -107,14 +134,7 @@ const FormClienteEmpresa = () => {
 								onChange={onchange}
 							/>
 							<Label>Empresa (s) <LabelReq> *</LabelReq></Label>
-							<Inputs
-								type="text"
-								name="empresa"
-								placeholder=""
-								value={empresa}
-								onChange={onchange}
-							/>
-							<button className="buttomCrearCuenta" type="submit">Crear Nuevo Cliente</button>
+							<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Nuevo Cliente</button>
 						</form>
 					</div>
 				</div>
