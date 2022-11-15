@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import { PacienteService } from "../api/PacienteService";
+import { PacienteService } from "../api/PacienteService";
 import {
 	Label,
 	LabelReq,
@@ -11,18 +11,17 @@ const FormPacienteCliente = () => {
 	const [checkBox, setCheckbox] = useState(false);
 	const [registerData, setRegisterData] = useState({
 		rut: '',
-		nDocumento: '',
+		ndocumento: '',
 		nombre: '',
 		apellido: '',
 		apellido2: '',
 		celular: '',
-		email: '',
-		password: '',
-		password2: '',
+		user: '',
+		passwd: '',
 		terminos: 'false'
 	});
 
-	const { rut, nDocumento, nombre, apellido, apellido2, celular, email, password, password2 } = registerData;
+	const { rut, ndocumento, nombre, apellido, apellido2, celular, user, passwd } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -38,9 +37,17 @@ const FormPacienteCliente = () => {
 		}));
 	};
 
-	const onSubmit = (e) => {
+	const clientePaciente = async(data) => {
+		const resp = await PacienteService()
+		return resp
+	}
+
+	const onSubmit = async(e) => {
 		e.preventDefault();
 		console.log(registerData);
+		clientePaciente(registerData)
+		const resp = await PacienteService(registerData)
+		console.log(resp)
 	};
 
 	return (
@@ -68,8 +75,8 @@ const FormPacienteCliente = () => {
 						<Inputs
 							type="text"
 							placeholder=""
-							name="nDocumento"
-							value={nDocumento}
+							name="ndocumento"
+							value={ndocumento}
 							onChange={onchange}
 						/>
 						<div class="d-flex flex-row mb-3">
@@ -122,28 +129,18 @@ const FormPacienteCliente = () => {
 						<Inputs
 							type="text"
 							placeholder=""
-							name="email"
-							value={email}
+							name="user"
+							value={user}
 							onChange={onchange}
 						/>
 						<div class="d-flex flex-row mb-3">
 							<Label>Contraseña <LabelReq> *</LabelReq></Label>
 						</div>
 						<Inputs
-							type="text"
+							type="password"
 							placeholder=""
-							name="password"
-							value={password}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
-							<Label>Repetir contraseña <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="password2"
-							value={password2}
+							name="passwd"
+							value={passwd}
 							onChange={onchange}
 						/>
 						<div className="boxTerminos">

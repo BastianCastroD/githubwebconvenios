@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/FormClienteEmpresa.css";
-//import { EmpresaService } from "../api/EmpresaService";
 import styles from "../styles/FormPacienteCliente.css";
+import {EmpresaService} from "../api/EmpresaService";
 import {
 	Label,
 	LabelReq,
@@ -14,14 +14,14 @@ const FormClienteEmpresa = () => {
 		nombre: '',
 		apellido: '',
 		apellido2: '',
-		email: '',
-		nombreKam: '',
-		emailKam: '',
+		user: '',
+		passwd: '',
+		kamConvenios: '',
+		kamCorreo: '',
 		cargo: '',
-		empresa: ''
 	});
 
-	const { rut, nombre, apellido, apellido2, email, nombreKam, emailKam, cargo, empresa } = registerData;
+	const { rut, nombre, apellido, apellido2, user, passwd,  kamConvenios, kamCorreo, cargo } = registerData;
 
 	const onchange = (event) => {
 		setRegisterData((prev) => ({
@@ -30,16 +30,25 @@ const FormClienteEmpresa = () => {
 		}));
 	};
 
-	const onSubmit = (e) => {
+	const clienteEmpresa = async(data) => {
+		const resp = await EmpresaService()
+		return resp
+	}
+
+	const onSubmit = async(e) => {
 		e.preventDefault();
 		console.log(registerData);
+		clienteEmpresa(registerData)
+		const resp = await EmpresaService(registerData)
+		console.log(resp)
 	};
+
 	return (
 		<main>
 			<div className="row align-items-center">
 				<div className="col-md-8">
 					<div>
-						<form className={styles.form} onSubmit={onSubmit}>
+						<form className={styles.form}>
 							<div className="contenedorTitulo">
 								<label className="titulo">Informacion Personal</label>
 							</div>
@@ -47,14 +56,14 @@ const FormClienteEmpresa = () => {
 							<Inputs
 								type="text"
 								placeholder=""
-								name="rutEmpresa"
+								name="rut"
 								value={rut}
 								onChange={onchange}
 							/>
 							<Label>Nombre <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="nombreEmpresa"
+								name="nombre"
 								placeholder=""
 								value={nombre}
 								onChange={onchange}
@@ -62,7 +71,7 @@ const FormClienteEmpresa = () => {
 							<Label>1° Apellido <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="apellidoEmpresa"
+								name="apellido"
 								placeholder=""
 								value={apellido}
 								onChange={onchange}
@@ -70,7 +79,7 @@ const FormClienteEmpresa = () => {
 							<Label>2° Apellido <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="apellidoEmpresa"
+								name="apellido2"
 								placeholder=""
 								value={apellido2}
 								onChange={onchange}
@@ -82,8 +91,16 @@ const FormClienteEmpresa = () => {
 							<Inputs
 								type="text"
 								placeholder=""
-								name="emailEmpresa"
-								value={email}
+								name="user"
+								value={user}
+								onChange={onchange}
+							/>
+							<Label>Contraseña <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								name="passwd"
+								placeholder=""
+								value={passwd}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -92,17 +109,17 @@ const FormClienteEmpresa = () => {
 							<Label>Nombre Kam <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="nombreKam"
+								name="kamConvenios"
 								placeholder=""
-								value={nombreKam}
+								value={kamConvenios}
 								onChange={onchange}
 							/>
 							<Label>Correo Electronico Kam <LabelReq> *</LabelReq></Label>
 							<Inputs
 								type="text"
-								name="emailKam"
+								name="kamCorreo"
 								placeholder=""
-								value={emailKam}
+								value={kamCorreo}
 								onChange={onchange}
 							/>
 							<div className="contenedorTitulo">
@@ -117,14 +134,7 @@ const FormClienteEmpresa = () => {
 								onChange={onchange}
 							/>
 							<Label>Empresa (s) <LabelReq> *</LabelReq></Label>
-							<Inputs
-								type="text"
-								name="empresa"
-								placeholder=""
-								value={empresa}
-								onChange={onchange}
-							/>
-							<button className="buttomCrearCuenta" type="submit">Crear Nuevo Cliente</button>
+							<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Nuevo Cliente</button>
 						</form>
 					</div>
 				</div>

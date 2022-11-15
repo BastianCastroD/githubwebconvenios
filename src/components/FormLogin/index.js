@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { LoginService } from '../../api/LoginService';
-// import clientFetch from '../../lib/client-fetch';
-// import { LoginService } from "../api/LoginService";
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 import ReCAPTCHA from "react-google-recaptcha";

@@ -51,9 +51,10 @@ const GrupoInput = styled.div`
 
 //Input de los formularios
 const Inputs = styled.input`
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0.8px;
-    color: black;
+    text-size: 12px
+    font-family: Arial, Helvetica, sans-serif
+    letter-spacing: 0.8px
+    color: red;
     width: 100%;
     background: #FFFFFF;
     border-radius: 3px;

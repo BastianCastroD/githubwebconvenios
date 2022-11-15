@@ -11,15 +11,15 @@ function Navbar() {
   return (
     <>
       <nav>
-          <div>
-            <img src={logoFarmaciasAhumada} height={53} alt="logo"></img>
-          </div>
-          <div className="iconoNavbar">
-            <img src={logoCuenta} height={29} alt="iconocuenta"></img>
-            <ul className="navbar">
-              <NavLink className="miCuenta" to="/Home">Mi Cuenta</NavLink>
-            </ul>
-          </div>
+        <div>
+          <img src={logoFarmaciasAhumada} height={53} alt="logo"></img>
+        </div>
+        <div className="iconoNavbar">
+          <img src={logoCuenta} height={29} alt="iconocuenta"></img>
+          <ul className="navbar">
+            <NavLink className="miCuenta" to="/Home">Mi Cuenta</NavLink>
+          </ul>
+        </div>
       </nav>
     </>
   )
