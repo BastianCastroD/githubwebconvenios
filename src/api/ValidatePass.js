@@ -12,11 +12,12 @@ export const ValidatePass = async (data) => {
 	};
 	const response = axios(config)
 		.then(({ data: outActualizar }) => {
-			console.log(outActualizar);
-			return JSON.stringify(outActualizar);
+			console.log(data)
+			return outActualizar;
 		})
 		.catch((error) => {
-			return error;
+			console.log(error.response.data)
+			return error.response.data;
 		});
 
 	return response;
