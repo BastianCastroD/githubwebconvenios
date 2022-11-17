@@ -1,15 +1,14 @@
 import React from "react";
-
 import { FormularioUnic, Label, GrupoInput, Inputs, LabelReq} from "./Formularios";
-import "../styles/OlvidasteContraseña.css";
+import "../styles/ContraseñaExpirada.css";
 
-const FormOlvidasteContraseña = () => {
+const FormContraseñaExpirada = () => {
     return (  
     <main className="mainUnic">
         <FormularioUnic action="">
             <div>
                 <div className="contenedorTitulo">   
-                    <label className="titulo">¿Olvidaste tu contraseña?</label>
+                    <label className="titulo">Contraseña Expirada</label>
                 </div>
                 <div className="leyenda">   
                     <label>
@@ -27,7 +26,7 @@ const FormOlvidasteContraseña = () => {
                         <span className="obligatorio">* Campos requeridos</span>
                     </div>
                     <div className="blockCrearCuenta">
-                        <button className="buttomRestablecerContraseña">Restablecer mi contraseña</button>
+                        <button className="buttomContraseñaExpirada">Restablecer mi contraseña</button>
                     </div>
                 </div>
             </div>
@@ -36,4 +35,4 @@ const FormOlvidasteContraseña = () => {
     );
 }
  
-export default FormOlvidasteContraseña;
+export default FormContraseñaExpirada;

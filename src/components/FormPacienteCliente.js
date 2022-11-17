@@ -162,7 +162,7 @@ const FormPacienteCliente = () => {
 							<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
 						</div>
 						<Inputs
-							type="text"
+							type="email"
 							placeholder=""
 							name="user"
 							value={user}
@@ -190,7 +190,12 @@ const FormPacienteCliente = () => {
 								<p> Acepto los <NavLink className="navTerminos" to="">Terminos y condiciones</NavLink></p>
 							</div>
 						</div>
-						<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Cuenta</button>
+						<div className="CrearPaciente">
+							<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Cuenta</button>
+							<div className="CampoRequerido">
+								<span>* Campos requeridos</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

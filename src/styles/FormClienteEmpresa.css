@@ -19,3 +19,18 @@ main {
     font-size: 13px;
 }
 
+.contenedorTitulo {
+    text-align: left;
+}
+
+.CrearEmpresa {
+    display: grid;
+    padding-top: 20px;
+}
+
+.CampoRequerido {
+    padding-top: 20px;
+    font-size: 12px;
+    padding-bottom: 15px;
+}
+

@@ -1,10 +1,10 @@
 import React from "react";
+import FormContraseñaExpirada from "../components/FormContraseñaExpirada";
 
 const CambiarPass = () => {
     return ( 
         <div>
-            <h1>Contraseña Expirada</h1>
-            <h1>Cambiar Contraseña</h1>
+            <FormContraseñaExpirada />
         </div>
     );
 }

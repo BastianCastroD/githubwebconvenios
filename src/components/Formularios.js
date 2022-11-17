@@ -47,6 +47,7 @@ const GrupoInput = styled.div`
     position: relative;
     z.index: 90;
     padding-bottom: 10px;
+    text-align: left;
 `;
 
 //Input de los formularios

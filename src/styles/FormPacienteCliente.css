@@ -120,3 +120,8 @@ span,
 .has-error {
 	border: 1px solid red;
 }
+
+.CrearPaciente {
+    text-align: left;
+    display: grid;
+}

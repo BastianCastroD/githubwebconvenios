@@ -51,7 +51,6 @@ const FormHome = () => {
 								</Label>
 								<InputH
 									className="inputForm"
-
 									value={initialState.rut}
 									type="text"
 									readOnly
