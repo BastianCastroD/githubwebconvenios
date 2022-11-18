@@ -9,6 +9,16 @@ import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import ModalAlert from "./ModalAlert";
 import { ValidatePass } from "../api/ValidatePass";
+const initialForm = {
+	rut: '',
+	ndocumento: '',
+	nombre: '',
+	apellido: '',
+	apellido2: '',
+	celular: '',
+	user: '',
+	passwd: '',
+};
 // import { Validate } from "../api/Validate";
 // import { Validate } from "../api/Validate";
 
@@ -62,6 +72,7 @@ const FormPacienteCliente = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		console.log(registerData.passwd);
+		handleClear();
 		const validatePassword = await ValidatePass(registerData.passwd)
 		console.log(validatePassword.response);
 		const a = [];
@@ -83,6 +94,10 @@ const FormPacienteCliente = () => {
 				setMsj("Paciente Cliente Creado")
 			}
 		}
+	};
+
+	const handleClear = () => {
+		setRegisterData(initialForm);
 	};
 
 	return (

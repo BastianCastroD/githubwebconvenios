@@ -10,6 +10,17 @@ import {
 } from "../components/Formularios";
 import Modal from "./Modal";
 import ModalAlert from "./ModalAlert";
+const initialForm = {
+	rut: '',
+  nombre: '',
+  apellido: '',
+  apellido2: '',
+  user: '',
+  passwd: '',
+  kamConvenios: '',
+  kamCorreo: '',
+  cargo: '',
+};
 
 const FormClienteEmpresa = () => {
 	const [msj, setMsj] = useState();
@@ -50,6 +61,7 @@ const FormClienteEmpresa = () => {
 		clienteEmpresa(registerData)
 		const resp = await EmpresaService(registerData)
 		console.log(JSON.parse(resp.length))
+		handleClear();
 		if (JSON.parse(resp.length) === 20) {
 			setShowModal(true)
 			setMsj("El Cliente Empresa ya existe")
@@ -57,6 +69,10 @@ const FormClienteEmpresa = () => {
 			setShowModal(true)
 			setMsj("Cliente Empresa Creado")
 		}
+	};
+	
+	const handleClear = () => {
+		setRegisterData(initialForm);
 	};
 
 	return (
