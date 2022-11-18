@@ -9,6 +9,7 @@ import {
 	Label,
 	LabelReq,
 	Inputs,
+	GrupoInput,
 } from "../Formularios";
 import Modal from '../Modal';
 import ModalAlert from '../ModalAlert';
@@ -101,26 +102,26 @@ const FormLogin = () => {
 						electrónico.
 					</div>
 					<form className={styles.form} onSubmit={onSubmit}>
-						<Label>
-							Correo Electronico <LabelReq> *</LabelReq>
-						</Label>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="email"
-							value={email}
-							onChange={onchange}
-						/>
-						<Label>
-							Contraseña <LabelReq> *</LabelReq>
-						</Label>
-						<Inputs
-							type="password"
-							name="password"
-							placeholder=""
-							value={password}
-							onChange={onchange}
-						/>
+						<GrupoInput>
+							<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="text"
+								placeholder=""
+								name="email"
+								value={email}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
+							<Label>Contraseña <LabelReq> *</LabelReq></Label>
+							<Inputs
+								type="password"
+								name="password"
+								placeholder=""
+								value={password}
+								onChange={onchange}
+							/>
+						</GrupoInput>
 						<div className="recaptcha">
 							<ReCAPTCHA
 								ref={captcha}

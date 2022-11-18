@@ -89,7 +89,7 @@ const FormClienteEmpresa = () => {
 									<Label>RUT <LabelReq> *</LabelReq></Label>
 									<Inputs
 										type="text"
-										placeholder=""
+										placeholder="Sin punto ni guión"
 										name="rut"
 										value={rut}
 										onChange={onchange}
@@ -134,7 +134,7 @@ const FormClienteEmpresa = () => {
 									<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
 									<Inputs
 										type="email"
-										placeholder=""
+										placeholder="example@example.com"
 										name="user"
 										value={user}
 										onChange={onchange}
@@ -149,6 +149,10 @@ const FormClienteEmpresa = () => {
 										value={passwd}
 										onChange={onchange}
 									/>
+									<div className="restriccionPass">
+										La contraseña debe contener minimo 7 caracteres y un maximo de 20 caracteres, 
+										se exige una letra, un numero y un caracter especial.
+									</div>		
 								</GrupoInput>							
 							</div>
 						</div>

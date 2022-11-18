@@ -32,21 +32,31 @@ const FormPaciente = styled.div`
 
 //Label de los formularios
 const Label = styled.label`
-    display: block;
+    font-family: Arial, Helvetica, sans-serif;
     color: rgb(77, 76, 83);
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 600;
     min-height: 25px;
+    padding-top: 10px
+    padding-bottom: 5px;
+`;
+
+//Aviso de restricciones de contraseña
+//Largo - C.Especial - Numero
+const RestriccionPass = styled.div`
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 15px;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #73777B;
 `;
 
 //Grupos de input de los formularios
 const GrupoInput = styled.div`
     position: relative;
     z.index: 90;
-    padding-bottom: 10px;
+    padding-top: 6px;
+    padding-bottom: 20px;
     text-align: left;
 `;
 
@@ -59,9 +69,9 @@ const Inputs = styled.input`
     width: 100%;
     background: #FFFFFF;
     border-radius: 3px;
-    height: 40px;
+    height: 45px;
     line-height: 45px;
-    padding 0 10px 0 10px;
+    padding 0 15px 0 15px;
     border: 0.5px solid rgb(194, 194, 194);
 
     &:focus {
@@ -127,5 +137,6 @@ export {
     FormularioUnic, 
     LeyendaError,
     MensajeExito,
-    FormPaciente
+    FormPaciente,
+    RestriccionPass,
 };

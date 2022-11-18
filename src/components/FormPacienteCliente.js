@@ -3,7 +3,9 @@ import { PacienteService } from "../api/PacienteService";
 import {
 	Label,
 	LabelReq,
-	Inputs
+	Inputs,
+	GrupoInput,
+	RestriccionPass,
 } from "../components/Formularios";
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
@@ -109,90 +111,95 @@ const FormPacienteCliente = () => {
 						<div className="contenedorTitulo">
 							<label className="titulo">Informacion Personal</label>
 						</div>
-						<div class="d-flex flex-row mb-3">
+						<GrupoInput>
 							<Label>RUT <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="rut"
-							value={rut}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="text"
+								placeholder="Sin punto ni guión"
+								name="rut"
+								value={rut}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>N° Documento <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="ndocumento"
-							value={ndocumento}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="text"
+								placeholder=""
+								name="ndocumento"
+								value={ndocumento}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>Nombre <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							name="nombre"
-							placeholder=""
-							value={nombre}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="text"
+								name="nombre"
+								placeholder=""
+								value={nombre}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>1° Apellido <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							name="apellido"
-							placeholder=""
-							value={apellido}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="text"
+								name="apellido"
+								placeholder=""
+								value={apellido}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>2° Apellido <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="apellido2"
-							value={apellido2}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="text"
+								placeholder=""
+								name="apellido2"
+								value={apellido2}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>Celular <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="text"
-							placeholder=""
-							name="celular"
-							value={celular}
-							onChange={onchange}
-						/>						</div>
+							<Inputs
+								type="text"
+								placeholder="9 XXXX XXXX"
+								name="celular"
+								value={celular}
+								onChange={onchange}
+							/>
+						</GrupoInput>						
+					</div>
 					<div class="col">
 						<div className="contenedorTitulo">
 							<label className="titulo">Informacion de la cuenta</label>
 						</div>
-						<div class="d-flex flex-row mb-3">
+						<GrupoInput>
 							<Label>Correo Electronico <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="email"
-							placeholder=""
-							name="user"
-							value={user}
-							onChange={onchange}
-						/>
-						<div class="d-flex flex-row mb-3">
+							<Inputs
+								type="email"
+								placeholder=""
+								name="user"
+								value={user}
+								onChange={onchange}
+							/>
+						</GrupoInput>
+						<GrupoInput>
 							<Label>Contraseña <LabelReq> *</LabelReq></Label>
-						</div>
-						<Inputs
-							type="password"
-							placeholder=""
-							name="passwd"
-							value={passwd}
-							onChange={onchange}
-						/>
+							<Inputs
+								type="password"
+								placeholder=""
+								name="passwd"
+								value={passwd}
+								onChange={onchange}
+							/>
+							<RestriccionPass>
+								La contraseña debe contener minimo 7 caracteres y un maximo de 20 caracteres, 
+								se exige una letra, un numero y un caracter especial.
+							</RestriccionPass>
+						</GrupoInput>
 						<div className="boxTerminos">
 							<input
 								type="checkbox"
