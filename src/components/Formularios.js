@@ -1,3 +1,6 @@
+// Archivo en el cual se encuentran los componentes y sus 
+// caracteristicas que conforman los formularios.
+
 import styled from "styled-components";
 
 //Constante de colores a utilizar
@@ -38,8 +41,8 @@ const Label = styled.label`
     font-size: 14px;
     font-weight: 600;
     min-height: 25px;
-    padding-top: 10px
-    padding-bottom: 5px;
+    padding-top: 5px
+    padding-bottom: 5px;s
 `;
 
 //Aviso de restricciones de contraseña
@@ -79,6 +82,20 @@ const Inputs = styled.input`
         outline: none;
         box-shadow: 3px 0px 15px rgba(163, 163, 163, 0.4);
     }
+`;
+
+//Input Administrar Usuario (Eliminar)
+const InputB = styled.input`
+    text-size: 12px
+    font-family: Arial, Helvetica, sans-serif
+    letter-spacing: 0.8px
+    color: red;
+    width: 40%;
+    background: #FFFFFF;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    border: 0.5px solid rgb(194, 194, 194);
 `;
 
 //Input para formulario de lectura HOME
@@ -133,6 +150,7 @@ export {
     GrupoInput, 
     Inputs, 
     InputH,
+    InputB,
     LabelReq, 
     FormularioUnic, 
     LeyendaError,

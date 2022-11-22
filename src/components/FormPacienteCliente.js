@@ -196,7 +196,7 @@ const FormPacienteCliente = () => {
 								onChange={onchange}
 							/>
 							<RestriccionPass>
-								La contraseña debe contener minimo 7 caracteres y un maximo de 20 caracteres, 
+								La contraseña debe contener desde 7 a 20 caracteres, 
 								se exige una letra, un numero y un caracter especial.
 							</RestriccionPass>
 						</GrupoInput>
@@ -213,7 +213,7 @@ const FormPacienteCliente = () => {
 							</div>
 						</div>
 						<div className="CrearPaciente">
-							<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Cuenta</button>
+							<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Confirmar Cuenta</button>
 							<div className="CampoRequerido">
 								<span>* Campos requeridos</span>
 							</div>

@@ -81,7 +81,7 @@ const FormLogin = () => {
 			console.log('El usuario no existe')
 		} else if (r.login[0].codigoResultadoLogin === 2) {
 			console.log('Usuario Invalido')
-			setShowModal(true)
+			setShowModal(true)	
 			setMsj("Usuario Invalido")
 		} else if (r.login[0].codigoResultadoLogin === 3) {
 			console.log('Clave Expirada')

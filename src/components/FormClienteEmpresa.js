@@ -6,7 +6,8 @@ import {
 	Label,
 	LabelReq,
 	Inputs,
-	GrupoInput
+	GrupoInput,
+	RestriccionPass
 } from "../components/Formularios";
 import Modal from "./Modal";
 import ModalAlert from "./ModalAlert";
@@ -149,10 +150,10 @@ const FormClienteEmpresa = () => {
 										value={passwd}
 										onChange={onchange}
 									/>
-									<div className="restriccionPass">
-										La contraseña debe contener minimo 7 caracteres y un maximo de 20 caracteres, 
+									<RestriccionPass>
+										La contraseña debe contener desde 7 a 20 caracteres, 
 										se exige una letra, un numero y un caracter especial.
-									</div>		
+									</RestriccionPass>		
 								</GrupoInput>							
 							</div>
 						</div>
@@ -181,7 +182,7 @@ const FormClienteEmpresa = () => {
 										onChange={onchange}
 									/>
 									<div className="CrearEmpresa">
-										<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Nuevo Cliente</button>
+										<button className="buttomCrearCuenta" type="button" onClick={onSubmit}>Crear Nuevo Usuario</button>
 										<div className="CampoRequerido">
 											<span>* Campos requeridos</span>
 										</div>
